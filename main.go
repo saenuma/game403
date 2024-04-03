@@ -98,7 +98,7 @@ func drawScene(window *glfw.Window, scene int) {
 	msgR1W, _ := ggCtx.MeasureString(msgR1)
 	msgR2W, _ := ggCtx.MeasureString(msgR2)
 
-	buttonsY := wHeight - 100
+	buttonsY := wHeight - 80
 	ggCtx.SetHexColor("#8B5A87")
 	ggCtx.DrawRoundedRectangle(200, float64(buttonsY), msgR1W+40, 50, 10)
 	ggCtx.Fill()
