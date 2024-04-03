@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0.1
+Type=Application
+Name=Game403
+Exec=game403
+Icon=${SNAP}/meta/gui/game403.png
