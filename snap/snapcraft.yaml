@@ -69,6 +69,7 @@ apps:
     plugs:
       - alsa
       - audio-playback
+      - pulseaudio
 
 
 layout:
