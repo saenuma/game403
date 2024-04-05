@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"image"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"runtime"
 	"time"
@@ -40,23 +39,13 @@ func main() {
 	drawScene(window, 1)
 
 	go func() {
-		if runtime.GOOS == "windows" {
-			playAudioWindows()
-		} else {
-			audioPath := filepath.Join(os.TempDir(), "audio.mp3")
-			os.WriteFile(audioPath, AudioBytes, 0666)
-
-			ctx, cancel := context.WithCancel(context.Background())
-			linuxCancelFn = cancel
-			cmd := exec.CommandContext(ctx, "ffplay", "-nodisp", audioPath)
-			cmd.Run()
-		}
+		playAudio()
 	}()
 
 	// respond to the mouse
 	window.SetMouseButtonCallback(mouseBtnCallback)
 	window.SetCloseCallback(func(w *glfw.Window) {
-		if linuxCancelFn != nil {
+		if runtime.GOOS == "linux" && linuxCancelFn != nil {
 			linuxCancelFn()
 		}
 	})

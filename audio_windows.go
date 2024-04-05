@@ -8,7 +8,7 @@ import (
 	"github.com/hajimehoshi/go-mp3"
 )
 
-func playAudioWindows() {
+func playAudio() {
 	// Convert the pure bytes into a reader object that can be used with the mp3 decoder
 	fileBytesReader := bytes.NewReader(AudioBytes)
 
