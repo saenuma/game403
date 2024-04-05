@@ -26,14 +26,12 @@ parts:
       - libgl1-mesa-dev
       - xorg-dev
       - libc6-dev
-      - libasound2-dev
     stage-packages:
-      - libasound2
-      - libasound2-plugins
+      - ffmpeg
     override-build: |
       set -xe
       go mod download
-      go build -o $SNAPCRAFT_PART_INSTALL/bin/game403 ./windows
+      go build -o $SNAPCRAFT_PART_INSTALL/bin/game403 ./linux
 
 
 apps: 
