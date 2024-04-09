@@ -31,6 +31,7 @@ parts:
       - libao4
       - libasound2
       - libmad0
+      - libaudio2
     override-build: |
       set -xe
       go mod download
