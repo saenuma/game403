@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -16,8 +17,9 @@ func playAudio() {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	linuxCancelFn = cancel
-	err := exec.CommandContext(ctx, mpg, audioPath).Run()
+	out, err := exec.CommandContext(ctx, mpg, audioPath).CombinedOutput()
 	if err != nil {
+		fmt.Println(string(out))
 		panic(err)
 	}
 }
