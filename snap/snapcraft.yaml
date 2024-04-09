@@ -14,11 +14,6 @@ architectures:
 
 
 parts:
-  ff-part:
-    plugin: nil
-    stage-snaps:
-      - ffmpeg-2204/latest/candidate
-      
   my-part:
     # See 'snapcraft plugins'
     plugin: go
@@ -31,6 +26,8 @@ parts:
       - libgl1-mesa-dev
       - xorg-dev
       - libc6-dev
+    stage-packages:
+      - mpg321
     override-build: |
       set -xe
       go mod download

@@ -13,6 +13,6 @@ func playAudio() {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	linuxCancelFn = cancel
-	cmd := exec.CommandContext(ctx, "ffplay", "-nodisp", audioPath)
+	cmd := exec.CommandContext(ctx, "mpg321", audioPath)
 	cmd.Run()
 }
