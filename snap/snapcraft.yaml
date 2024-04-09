@@ -27,7 +27,7 @@ parts:
       - xorg-dev
       - libc6-dev
     stage-packages:
-      - mpg321
+      - madplay
       - libao4
       - libasound2
       - libmad0
