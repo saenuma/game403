@@ -32,7 +32,7 @@ parts:
       - libasound2
       - libmad0
       - libaudio2
-      - libsndio.so.7
+      - libsndio7.0
     override-build: |
       set -xe
       go mod download
