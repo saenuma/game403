@@ -16,8 +16,10 @@ func playAudio() {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	linuxCancelFn = cancel
-	cmd := exec.CommandContext(ctx, mpg, audioPath)
-	cmd.Run()
+	err := exec.CommandContext(ctx, mpg, audioPath).Run()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func GetMPGCommand() string {
