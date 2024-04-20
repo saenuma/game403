@@ -17,9 +17,8 @@ import (
 )
 
 const (
-	fps        = 10
-	sceneLimit = 5
-	fontSize   = 30
+	fps      = 10
+	fontSize = 30
 
 	BlessBtn = 101
 	CurseBtn = 102
@@ -28,6 +27,7 @@ const (
 var objCoords map[int]g143.RectSpecs
 var currentScene int
 var linuxCancelFn context.CancelFunc
+var sceneLimit int
 
 func main() {
 	runtime.LockOSThread()
@@ -37,6 +37,9 @@ func main() {
 	window := g143.NewWindow(1200, 800, "Game403: a game about rewards", false)
 	currentScene = 1
 	drawScene(window, 1)
+
+	dirEs, _ := PNGs.ReadDir("pngs")
+	sceneLimit = len(dirEs)
 
 	go func() {
 		playAudio()
@@ -99,7 +102,7 @@ func drawScene(window *glfw.Window, scene int) {
 	if err != nil {
 		panic(err)
 	}
-	imgW, imgH := int(float64(img.Bounds().Dx())*0.9), int(float64(img.Bounds().Dy())*0.9)
+	imgW, imgH := int(1000*0.9), int(700*0.9)
 	img = imaging.Fit(img, imgW, imgH, imaging.Lanczos)
 	imgX := (wWidth - img.Bounds().Dx()) / 2
 	ggCtx.DrawImage(img, imgX, 60)
@@ -111,6 +114,12 @@ func drawScene(window *glfw.Window, scene int) {
 
 	buttonsY := wHeight - 80
 	ggCtx.SetHexColor("#8B5A87")
+
+	giftImg, _, _ := image.Decode(bytes.NewReader(GiftBytes))
+	giftImg = imaging.Fit(giftImg, 50, 50, imaging.Lanczos)
+	ggCtx.DrawImage(giftImg, 200-60, buttonsY)
+	ggCtx.Fill()
+
 	ggCtx.DrawRoundedRectangle(200, float64(buttonsY), msgR1W+40, 50, 10)
 	ggCtx.Fill()
 	bbRS := g143.NRectSpecs(200, buttonsY, int(msgR1W+40), 50)
@@ -118,6 +127,11 @@ func drawScene(window *glfw.Window, scene int) {
 
 	ggCtx.SetHexColor("#fff")
 	ggCtx.DrawString(msgR1, 200+20, float64(buttonsY)+fontSize+5)
+
+	swordImg, _, _ := image.Decode(bytes.NewReader(SwordBytes))
+	swordImg = imaging.Fit(swordImg, 50, 50, imaging.Lanczos)
+	ggCtx.DrawImage(swordImg, 900-60, buttonsY)
+	ggCtx.Fill()
 
 	ggCtx.SetHexColor("#85836E")
 	ggCtx.DrawRoundedRectangle(900, float64(buttonsY), msgR2W+40, 50, 10)
