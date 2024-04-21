@@ -20,7 +20,6 @@ func playAudio() {
 	out, err := exec.CommandContext(ctx, mpg, audioPath).CombinedOutput()
 	if err != nil {
 		fmt.Println(string(out))
-		panic(err)
 	}
 }
 
