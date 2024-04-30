@@ -122,7 +122,7 @@ func drawScene(window *glfw.Window, scene int) {
 
 	ggCtx.DrawRoundedRectangle(200, float64(buttonsY), msgR1W+40, 50, 10)
 	ggCtx.Fill()
-	bbRS := g143.NRectSpecs(200, buttonsY, int(msgR1W+40), 50)
+	bbRS := g143.NRectSpecs(200-60, buttonsY, int(msgR1W+40), 50)
 	objCoords[BlessBtn] = bbRS
 
 	ggCtx.SetHexColor("#fff")
@@ -136,7 +136,7 @@ func drawScene(window *glfw.Window, scene int) {
 	ggCtx.SetHexColor("#85836E")
 	ggCtx.DrawRoundedRectangle(900, float64(buttonsY), msgR2W+40, 50, 10)
 	ggCtx.Fill()
-	cbRS := g143.NRectSpecs(900, buttonsY, int(msgR2W)+40, 50)
+	cbRS := g143.NRectSpecs(900-60, buttonsY, int(msgR2W)+40, 50)
 	objCoords[CurseBtn] = cbRS
 
 	ggCtx.SetHexColor("#fff")
