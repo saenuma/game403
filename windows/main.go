@@ -13,6 +13,7 @@ import (
 	"github.com/disintegration/imaging"
 	"github.com/fogleman/gg"
 	"github.com/go-gl/glfw/v3.3/glfw"
+	"github.com/saenuma/Game403/g403l"
 )
 
 const (
@@ -36,7 +37,7 @@ func main() {
 	currentScene = 1
 	drawScene(window, 1)
 
-	dirEs, _ := PNGs.ReadDir("pngs")
+	dirEs, _ := g403l.PNGs.ReadDir("pngs")
 	sceneLimit = len(dirEs)
 
 	go func() {
@@ -57,7 +58,7 @@ func main() {
 
 func getDefaultFontPath() string {
 	fontPath := filepath.Join(os.TempDir(), "g403_font.ttf")
-	os.WriteFile(fontPath, DefaultFont, 0777)
+	os.WriteFile(fontPath, g403l.DefaultFont, 0777)
 	return fontPath
 }
 
@@ -86,7 +87,7 @@ func drawScene(window *glfw.Window, scene int) {
 	ggCtx.SetHexColor("#444")
 	ggCtx.DrawString(msg, float64(msgX), 10+fontSize)
 
-	rawPNG, err := PNGs.ReadFile(fmt.Sprintf("pngs/%d.png", scene))
+	rawPNG, err := g403l.PNGs.ReadFile(fmt.Sprintf("pngs/%d.png", scene))
 	if err != nil {
 		panic(err)
 	}
@@ -108,7 +109,7 @@ func drawScene(window *glfw.Window, scene int) {
 	buttonsY := wHeight - 80
 	ggCtx.SetHexColor("#8B5A87")
 
-	giftImg, _, _ := image.Decode(bytes.NewReader(GiftBytes))
+	giftImg, _, _ := image.Decode(bytes.NewReader(g403l.GiftBytes))
 	giftImg = imaging.Fit(giftImg, 50, 50, imaging.Lanczos)
 	ggCtx.DrawImage(giftImg, 200-60, buttonsY)
 	ggCtx.Fill()
@@ -121,7 +122,7 @@ func drawScene(window *glfw.Window, scene int) {
 	ggCtx.SetHexColor("#fff")
 	ggCtx.DrawString(msgR1, 200+20, float64(buttonsY)+fontSize+5)
 
-	swordImg, _, _ := image.Decode(bytes.NewReader(SwordBytes))
+	swordImg, _, _ := image.Decode(bytes.NewReader(g403l.SwordBytes))
 	swordImg = imaging.Fit(swordImg, 50, 50, imaging.Lanczos)
 	ggCtx.DrawImage(swordImg, 900-60, buttonsY)
 	ggCtx.Fill()

@@ -6,11 +6,12 @@ import (
 
 	"github.com/ebitengine/oto/v3"
 	"github.com/hajimehoshi/go-mp3"
+	"github.com/saenuma/Game403/g403l"
 )
 
 func playAudio() {
 	// Convert the pure bytes into a reader object that can be used with the mp3 decoder
-	fileBytesReader := bytes.NewReader(AudioBytes)
+	fileBytesReader := bytes.NewReader(g403l.AudioBytes)
 
 	// Decode file
 	decodedMp3, err := mp3.NewDecoder(fileBytesReader)
