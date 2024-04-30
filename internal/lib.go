@@ -1,4 +1,4 @@
-package g403l
+package internal
 
 import (
 	"embed"

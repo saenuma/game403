@@ -1,4 +1,4 @@
-module github.com/saenuma/Game403
+module github.com/saenuma/game403
 
 go 1.22.1
 

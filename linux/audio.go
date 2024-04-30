@@ -8,12 +8,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/saenuma/Game403/g403l"
+	"github.com/saenuma/game403/internal"
 )
 
 func playAudio() {
 	audioPath := filepath.Join(os.TempDir(), "audio.mp3")
-	os.WriteFile(audioPath, g403l.AudioBytes, 0666)
+	os.WriteFile(audioPath, internal.AudioBytes, 0666)
 
 	mpg := GetMPGCommand()
 
