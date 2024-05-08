@@ -116,7 +116,7 @@ func drawScene(window *glfw.Window, scene int) {
 
 	ggCtx.DrawRoundedRectangle(200, float64(buttonsY), msgR1W+40, 50, 10)
 	ggCtx.Fill()
-	bbRS := g143.NRectSpecs(200-60, buttonsY, int(msgR1W+40), 50)
+	bbRS := g143.NRectSpecs(200-60, buttonsY, int(msgR1W)+40+60, 50)
 	objCoords[BlessBtn] = bbRS
 
 	ggCtx.SetHexColor("#fff")
