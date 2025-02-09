@@ -9,6 +9,7 @@ require (
 	github.com/fogleman/gg v1.3.0
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20240307211618-a69d953ea142
 	github.com/hajimehoshi/go-mp3 v0.3.4
+	github.com/kovidgoyal/imaging v1.6.3
 )
 
 require (
