@@ -46,7 +46,11 @@ func DrawScene(window *glfw.Window, scene int) {
 		panic(err)
 	}
 	imgW, imgH := int(1000*0.9), int(700*0.9)
-	img = imaging.Fit(img, imgW, imgH, imaging.Lanczos)
+	if img.Bounds().Dx() > imgW {
+		img = imaging.Fit(img, imgW, imgH, imaging.Lanczos)
+	} else {
+		img = imaging.Fill(img, imgW, imgH, imaging.Center, imaging.Lanczos)
+	}
 	imgX := (wWidth - img.Bounds().Dx()) / 2
 	ggCtx.DrawImage(img, imgX, 60)
 
