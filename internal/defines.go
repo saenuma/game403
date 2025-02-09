@@ -12,6 +12,6 @@ const (
 	CurseBtn = 102
 )
 
-var ObjCoords map[int]g143.RectSpecs
+var ObjCoords map[int]g143.Rect
 var CurrentScene int
 var SceneLimit int

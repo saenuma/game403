@@ -12,7 +12,7 @@ import (
 func main() {
 	runtime.LockOSThread()
 
-	internal.ObjCoords = make(map[int]g143.RectSpecs)
+	internal.ObjCoords = make(map[int]g143.Rect)
 
 	window := g143.NewWindow(1200, 800, "Game403: a game about rewards", false)
 	internal.CurrentScene = 1

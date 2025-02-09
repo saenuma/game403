@@ -65,7 +65,7 @@ func DrawScene(window *glfw.Window, scene int) {
 
 	ggCtx.DrawRoundedRectangle(200, float64(buttonsY), msgR1W+40, 50, 10)
 	ggCtx.Fill()
-	bbRS := g143.NRectSpecs(200-60, buttonsY, int(msgR1W)+40+60, 50)
+	bbRS := g143.NewRect(200-60, buttonsY, int(msgR1W)+40+60, 50)
 	ObjCoords[BlessBtn] = bbRS
 
 	ggCtx.SetHexColor("#fff")
@@ -79,14 +79,14 @@ func DrawScene(window *glfw.Window, scene int) {
 	ggCtx.SetHexColor("#85836E")
 	ggCtx.DrawRoundedRectangle(900, float64(buttonsY), msgR2W+40, 50, 10)
 	ggCtx.Fill()
-	cbRS := g143.NRectSpecs(900-60, buttonsY, int(msgR2W)+40, 50)
+	cbRS := g143.NewRect(900-60, buttonsY, int(msgR2W)+40, 50)
 	ObjCoords[CurseBtn] = cbRS
 
 	ggCtx.SetHexColor("#fff")
 	ggCtx.DrawString(msgR2, 900+20, float64(buttonsY)+FontSize+5)
 
 	// send the frame to glfw window
-	windowRS := g143.RectSpecs{Width: wWidth, Height: wHeight, OriginX: 0, OriginY: 0}
+	windowRS := g143.Rect{Width: wWidth, Height: wHeight, OriginX: 0, OriginY: 0}
 	g143.DrawImage(wWidth, wHeight, ggCtx.Image(), windowRS)
 	window.SwapBuffers()
 
@@ -103,11 +103,11 @@ func MouseBtnCallback(window *glfw.Window, button glfw.MouseButton, action glfw.
 
 	// wWidth, wHeight := window.GetSize()
 
-	// var widgetRS g143.RectSpecs
+	// var widgetRS g143.Rect
 	var widgetCode int
 
 	for code, RS := range ObjCoords {
-		if g143.InRectSpecs(RS, xPosInt, yPosInt) {
+		if g143.InRect(RS, xPosInt, yPosInt) {
 			// widgetRS = RS
 			widgetCode = code
 			break
